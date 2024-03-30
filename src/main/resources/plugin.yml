@@ -1,0 +1,11 @@
+# ooga booga (;
+name: OogaBoogaDeluxe
+version: 1.0
+author: killercreepr
+main: killerceepr.oogabooga.OogaBoogaDeluxe
+api-version: 1.18
+softdepend: [PlaceholderAPI]
+commands:
+  roof:
+  reloadoogabooga:
+    permission: oogaboogadeluxe.cmds.reloadoogabooga.use
