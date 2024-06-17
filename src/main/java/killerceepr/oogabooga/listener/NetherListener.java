@@ -107,9 +107,16 @@ public class NetherListener implements Listener {
         Location center = data.getEnteredNetherRoof();
         double MAX_Y = Config.V.NETHER_ROOF_Y.getDouble();
         if(center != null){
-            if(to.getY() < MAX_Y){
-                data.setEnteredNetherRoof(null);
-                return false;
+            if(center.getY() >= MAX_Y){
+                if(to.getY() < MAX_Y){
+                    data.setEnteredNetherRoof(null);
+                    return false;
+                }
+            }else if(center.getY() <= 0D){
+                if(to.getY() > MAX_Y){
+                    data.setEnteredNetherRoof(null);
+                    return false;
+                }
             }
             if(!check(center, to)){
                 Config.V.NO_ROOF_TRAVEL_MSG.use(p, OogaBoogaDeluxe.tags(from, center));
@@ -117,7 +124,7 @@ public class NetherListener implements Listener {
             }
             return false;
         }
-        if(to.getY() >= MAX_Y) data.setEnteredNetherRoof(to.clone());
+        if(to.getY() >= MAX_Y || to.getY() <= 0D) data.setEnteredNetherRoof(to.clone());
         return false;
     }
 
